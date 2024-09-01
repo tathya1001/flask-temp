@@ -9,9 +9,9 @@ file_path = os.path.join(os.path.dirname(__file__), 'reduced_movies.pkl')
 with open(file_path, 'rb') as f:
     reduced_data = pickle.load(f)
 
-@app.route("/recommend/<string:movie>")
+@app.route("/recommend/<int:movie>")
 def home(movie):
-    return jsonify(reduced_data[0])
+    return jsonify(reduced_data[movie])
 
 @app.errorhandler(404)
 def page_not_found(e):
