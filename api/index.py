@@ -1,13 +1,12 @@
-# /api/index.py
-
 from flask import Flask, jsonify
+import pickle
 
 app = Flask(__name__)
-
+reduced_data = pickle.load(open('reduced_movies.pkl', 'rb'))
 
 @app.route("/")
 def home():
-    return jsonify("{Flask Vercel Example - Hello World}")
+    return jsonify(reduced_data[0])
 
 
 @app.errorhandler(404)
