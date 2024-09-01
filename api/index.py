@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 import pickle
 
 app = Flask(__name__)
-reduced_data = pickle.load(open('reduced_movies.pkl', 'rb'))
+# reduced_data = pickle.load(open('reduced_movies.pkl', 'rb'))
 
 @app.route("/")
 def home():
