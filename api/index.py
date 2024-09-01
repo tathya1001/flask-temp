@@ -6,7 +6,7 @@ reduced_data = pickle.load(open('reduced_movies.pkl', 'rb'))
 
 @app.route("/")
 def home():
-    return jsonify(reduced_data[0])
+    return jsonify({"hello"})
 
 
 @app.errorhandler(404)
