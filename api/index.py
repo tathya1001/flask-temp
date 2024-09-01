@@ -14,6 +14,12 @@ load_dotenv()
 # with open(file_path, 'rb') as f:
 #     reduced_data = pickle.load(f)
 
+
+@app.route("/")
+def recommend(movie):
+
+    return jsonify(["hello", "hi"])
+
 @app.route("/recommend/<string:movie>")
 def recommend(movie):
 
