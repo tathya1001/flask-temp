@@ -15,6 +15,7 @@ def home(movie):
     for i in reduced_data:
         if i['title'] == movie:
             data = i
+            break
     return jsonify(data)
 
 @app.errorhandler(404)
