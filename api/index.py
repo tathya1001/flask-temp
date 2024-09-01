@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return jsonify({"hello"})
+    return jsonify(["hello", "hi"])
 
 
 @app.errorhandler(404)
