@@ -6,19 +6,10 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS if you're calling this API from a frontend application
-
-# Load environment variables from a .env file
+CORS(app)  
 load_dotenv()
 
-# Load API key from environment variable
-TMDB_API_KEY = os.getenv('TMDB_API_KEY')
 
-# Check if the API key is loaded
-if not TMDB_API_KEY:
-    raise ValueError("TMDB API key not found in environment variables.")
-
-# Load the .pkl file relative to the current file's directory
 file_path = os.path.join(os.path.dirname(__file__), 'reduced_movies.pkl')
 with open(file_path, 'rb') as f:
     reduced_data = pickle.load(f)
