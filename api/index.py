@@ -4,7 +4,7 @@ import os
 import pickle
 
 app = Flask(__name__)
-CORS(app, origins="http://localhost:5173")  # Enable CORS for all routes
+CORS(app)  # Enable CORS for all routes
 
 # Load the .pkl file relative to the current file's directory
 file_path = os.path.join(os.path.dirname(__file__), 'reduced_movies.pkl')
@@ -19,6 +19,11 @@ def home(movie):
             data = i
             break
     return jsonify(data)
+
+@app.route("/test", methods=['GET'])
+def test():
+    return jsonify(['hello', 'hi'])
+
 
 @app.errorhandler(404)
 def page_not_found(e):
