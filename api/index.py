@@ -1,8 +1,10 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 import os
 import pickle
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
 # Load the .pkl file relative to the current file's directory
 file_path = os.path.join(os.path.dirname(__file__), 'reduced_movies.pkl')
