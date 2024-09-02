@@ -9,7 +9,7 @@ file_path = os.path.join(os.path.dirname(__file__), 'reduced_movies.pkl')
 with open(file_path, 'rb') as f:
     reduced_data = pickle.load(f)
 
-@app.route("/recommend/<string:movie>")
+@app.route("/recommend/<string:movie>", methods=['GET'])
 def home(movie):
     data = {}
     for i in reduced_data:
