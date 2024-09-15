@@ -11,29 +11,15 @@ file_path = os.path.join(os.path.dirname(__file__), 'reduced_movies.pkl')
 with open(file_path, 'rb') as f:
     reduced_data = pickle.load(f)
     
-# @app.route("/recommend/<string:movie>", methods=['GET'])
-# def home(movie):
-#     data = {}
-#     movie = movie.lower()
-    
-#     for i in reduced_data:
-#         if i['title'].lower() == movie:
-#             data = i
-#             break
-#     return jsonify(data)
-
 @app.route("/recommend/<string:movie>", methods=['GET'])
 def home(movie):
     data = {}
-
-    movie = movie.lower()
-    
+    movie = movie.replace('%20', ' ').lower().strip()
     for i in reduced_data:
-        if i['title'].lower() == movie:
+        if i['title'].lower().strip() == movie:
             data = i
             break
-    
-    return jsonify(movie)
+    return jsonify(data)
 
 @app.route("/test", methods=['GET'])
 def test():
