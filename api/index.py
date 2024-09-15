@@ -20,17 +20,28 @@ with open(file_path, 'rb') as f:
 #             break
 #     return jsonify(data)
     
+# @app.route("/recommend/<string:movie>", methods=['GET'])
+# def home(movie):
+#     data = {}
+#     movie = movie.lower()
+    
+#     for i in reduced_data:
+#         if i['title'].lower() == movie:
+#             data = i
+#             break
+#     return jsonify(data)
+
 @app.route("/recommend/<string:movie>", methods=['GET'])
 def home(movie):
     data = {}
-    movie = movie.lower()
+    movie = urllib.parse.unquote(movie).lower()
     
     for i in reduced_data:
         if i['title'].lower() == movie:
             data = i
             break
     return jsonify(data)
-    
+
 @app.route("/test", methods=['GET'])
 def test():
     return jsonify(['hello', 'hi'])
